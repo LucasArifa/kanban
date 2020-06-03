@@ -136,6 +136,10 @@ function details(dotsId, moreId, imgId) {
      moreId.style.display = "inline";
    }
 }
+// NEXT STEP
+function dragToNextStep(ev) {
+  ev.dataTransfer.setData("div", ev.target.id);
+}
 
 // DELETE
 function deleteTask(taskDivId){
