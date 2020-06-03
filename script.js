@@ -48,15 +48,20 @@ function createTask(taskString) {
   let textarea = document.createElement("textarea");
   let img = document.createElement("img");
   let imgCloseButton = document.createElement("img");
+  let imgCheckButton = document.createElement("img");
   let divNextStepButton = document.createElement("div");
   let divDeleteButton = document.createElement("div");
   let divDeleteButtonClose = document.createElement("div");
+  let divNextStepButtonClose = document.createElement("div");
+
 
   toDoTasks.appendChild(div);
   div.appendChild(h4);
   div.appendChild(spanDots);
   spanDots.appendChild(divDeleteButtonClose);
   divDeleteButtonClose.appendChild(imgCloseButton);
+  spanDots.appendChild(divNextStepButtonClose);
+  divNextStepButtonClose.appendChild(imgCheckButton);
   div.appendChild(spanMore);
   spanMore.appendChild(textarea);
   spanMore.appendChild(divNextStepButton);
@@ -65,13 +70,13 @@ function createTask(taskString) {
 
   h4.innerText = taskString;
   divDeleteButton.innerText = "DELETE";
+  divNextStepButton.innerText = "NEXT STEP";
 
-  div.setAttribute("class", "field-Criteria");
+  div.setAttribute("class", "field-Criteria taskDiv");
   div.setAttribute("name", "task");
   div.setAttribute("id", `taskDivId${countTasks()}`);
   div.setAttribute("draggable", "true");
   div.setAttribute("ondragstart", "drag(event)");
-
 
   h4.setAttribute("id", "taskTitlleH4");
 
@@ -85,7 +90,14 @@ function createTask(taskString) {
    imgCloseButton.setAttribute("class", "imgCloseButtonClass");
    imgCloseButton.setAttribute("draggable", "false");
 
-  spanMore.setAttribute("id", `more${countTasks()}`);
+   divNextStepButtonClose.setAttribute("class", "field-Criteria nextStepButtonCheckClass");
+   divNextStepButtonClose.setAttribute("onclick", `nextStepTask(taskDivId${countTasks()})`);
+
+   imgCheckButton.setAttribute("src", "images/check.png");
+   imgCheckButton.setAttribute("class", "imgCheckButtonClass");
+   imgCheckButton.setAttribute("draggable", "false");
+
+   spanMore.setAttribute("id", `more${countTasks()}`);
   spanMore.setAttribute("class", "moreClass");
 
   textarea.setAttribute("name", "taskDetailsName");
@@ -96,10 +108,13 @@ function createTask(taskString) {
   textarea.setAttribute("placeholder", "ADD TASKS DETAILS");
   textarea.setAttribute("wrap", "on");
   
-
   divDeleteButton.setAttribute("class", "field-Criteria deleteButtonClass");
   divDeleteButton.setAttribute("id", `deleteId${countTasks()}`);
   divDeleteButton.setAttribute("onclick", `deleteTask(taskDivId${countTasks()})`);
+
+  divNextStepButton.setAttribute("class", "field-Criteria nextStepButtonClass");
+  divNextStepButton.setAttribute("id", `deleteId${countTasks()}`);
+  divNextStepButton.setAttribute("onclick", `nextStepTask(taskDivId${countTasks()})`);
 
   img.setAttribute("class", "arrowDown");
   img.setAttribute("id", `arrowDownId${countTasks()}`);
