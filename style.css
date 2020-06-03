@@ -167,8 +167,10 @@ input[type="text"]:focus {
   color: black;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.field-Criteria .deleteButtonClass, 
-.field-Criteria .deleteButtonCloseClass {
+.field-Criteria .deleteButtonClass,
+.field-Criteria .nextStepButtonClass, 
+.field-Criteria .deleteButtonCloseClass,
+.field-Criteria .nextStepButtonCheckClass {
   transition: ease-in-out 1s;
   filter: alpha(opacity=50);
 	padding: 2px;
@@ -185,20 +187,34 @@ input[type="text"]:focus {
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
-.field-Criteria .deleteButtonClass {
+.field-Criteria .nextStepButtonClass:hover, 
+.field-Criteria .nextStepButtonCheckClass:hover{
+  background-color: rgb(0, 255, 64);
+  cursor: pointer;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+.field-Criteria .deleteButtonClass, .field-Criteria .nextStepButtonClass  {
 	margin: 10px auto 50px auto;
 }
-.field-Criteria .deleteButtonCloseClass {
-width: 10%;
+
+.field-Criteria .deleteButtonCloseClass , .field-Criteria .nextStepButtonCheckClass {
+width: 15%;
 height: 35%;
 position: absolute;
-right: 88%;
-bottom: 45%;
+right: 80%;
+bottom: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.imgCloseButtonClass {
+.field-Criteria .nextStepButtonCheckClass{
+left: 80%;
+}
+.imgCloseButtonClass , .imgCheckButtonClass {
   width: 20px;
   height: 20px;
 }
