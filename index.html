@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="Kanban Icon" href="/images/k-icon.jpg" type="image/x-icon" />
+	<title>Kanban</title>
+
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+	<div class="app">
+		<header>
+			<h1 class="kaban"><img id="k-icon" class="k-icon-class" src="images/k-icon.jpg" alt="K Icon"> anban</h1> </br>
+		<hr>
+			<p class="kabanVpm">Visual Project Manager</p>
+		</header>
+		<div class="add-fields">
+				<input type="text" name="inputFieldClassName" id="inputFieldId" maxlength="20" placeholder="TASK TITLE">
+				<img class="addTaskButtonClass" id="addTaskButtonId" src="/images/add.svg" alt="Add List Item">
+		</div>
+
+		<div class="fields" align="center">
+			
+			<div class="field" id="divToDoId" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<p class="field-Criteria" id="toDo"><strong>TO DO</strong>
+				</p>
+				<!-- TO DO TASKS LIST -->
+				
+			</div>
+			<div class="field" id="divDoingId" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<p class="field-Criteria" id="doing" ><strong>DOING</strong>
+				</p>
+				<!-- DOING TASKS LIST -->
+
+
+			</div>
+			<div class="field" id="divDoneId" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<p class="field-Criteria" id="done"><strong>DONE</strong>
+				</p>
+				<!-- DONE TASKS LIST -->
+
+
+			</div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
