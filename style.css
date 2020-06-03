@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(151, 151, 151);
+  font-family: "Roboto", Helvetica, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-flow: column;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  padding: 20px;
+  margin: 50px auto 50px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 1) 10px 10px;
+  font-size: 20pt;
+}
+.k-icon-class {
+  width: 50px;
+  position: relative;
+  left: 10px;
+  border-radius: 10px;
+}
+hr {
+  width: 100%;
+  position: relative;
+  bottom: 20px;
+  border: black solid 1px;
+  border-radius: 50%;
+}
+
+.fields {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fields .field {
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+
+  width: 100%;
+  min-width: 250px;
+  max-width: 350px;
+  height: 100%;
+  min-height: 150px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 0 15px;
+  padding: 8px;
+  transition: all 0.5s linear;
+}
+.fields .field .field-item,
+.field-Criteria {
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 15px 20px;
+  text-align: center;
+  margin: 4px 0px;
+}
+.field-Criteria {
+  font-size: 15pt;
+  border: rgba(0, 0, 0, 1) solid 1px;
+  text-shadow: white;
+  box-shadow: rgba(0, 0, 0, 1) 5px 5px;
+  position: relative;
+}
+#toDo {
+  background-color: rgb(145, 142, 129);
+}
+#doing {
+  background-color: rgb(255, 208, 0);
+}
+#done {
+  background-color: rgb(80, 211, 75);
+}
+/* Add FIelds Button */
+.add-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0px;
+  padding: 0%;
+  width: 100%;
+}
+input[type="text"] {
+  width: 300px;
+  height: 55px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 15pt;
+  transition: width 0.5s ease-in-out;
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+input[type="text"]:focus {
+  width: 50%;
+}
+.addTaskButtonClass {
+  width: 55px;
+  height: 55px;
+  border-radius: 5px;
+  background-color: white;
+  border: black 1px solid;
+  box-shadow: rgba(0, 0, 0, 1) 3px 3px;
+  padding: 5px;
+  margin: 10px;
+  align-self: center;
+  transition: all 0.2s;
+}
+.addTaskButtonClass:hover {
+  cursor: pointer;
+}
+/* Tasks */
+.arrowDown {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+.arrowUp {
+  transform: rotate(180deg);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+.arrowDown:hover,
+.arrowUp:hover {
+  width: 40px;
+  height: 40px;
+}
+.moreClass {
+  display: none;
+  padding: 10px;
+  margin: 10px;
+}
+#taskDetailsId {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #888;
+  border-radius: 5px;
+  outline: transparent;
+  padding: 10px;
+  margin: 10px;
+  max-inline-size: 90%;
+  min-inline-size: 90%;
+  resize: none;
+  overflow: auto;
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.field-Criteria .deleteButtonClass, 
+.field-Criteria .deleteButtonCloseClass {
+  transition: ease-in-out 1s;
+  filter: alpha(opacity=50);
+	padding: 2px;
+	width: 55%;
+	height: 30px;
+}
+.field-Criteria .deleteButtonClass:hover,
+.field-Criteria .deleteButtonCloseClass:hover {
+  cursor: pointer;
+  background-color: rgb(255, 0, 0);
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+.field-Criteria .deleteButtonClass {
+	margin: 10px auto 50px auto;
+}
+.field-Criteria .deleteButtonCloseClass {
+width: 10%;
+height: 35%;
+position: absolute;
+right: 88%;
+bottom: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgCloseButtonClass {
+  width: 20px;
+  height: 20px;
+}
+
