@@ -137,9 +137,6 @@ function details(dotsId, moreId, imgId) {
    }
 }
 // NEXT STEP
-function dragToNextStep(ev) {
-  ev.dataTransfer.setData("div", ev.target.id);
-}
 
 // DELETE
 function deleteTask(taskDivId){
@@ -152,11 +149,11 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  ev.dataTransfer.setData("div", ev.target.id);
+  ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function drop(ev) {
+function drop(ev, el) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("div");
-  ev.target.appendChild(document.getElementById(data));
+  var data = ev.dataTransfer.getData("text");
+  el.appendChild(document.getElementById(data));
 }
