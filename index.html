@@ -23,20 +23,20 @@
 
 		<div class="fields" align="center">
 			
-			<div class="field" id="divToDoId" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<div class="field" id="divToDoId" ondrop="drop(event, this)" ondragover="allowDrop(event)">
 				<p class="field-Criteria" id="toDo"><strong>TO DO</strong>
 				</p>
 				<!-- TO DO TASKS LIST -->
 				
 			</div>
-			<div class="field" id="divDoingId" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<p class="field-Criteria" id="doing" ><strong>DOING</strong>
+			<div class="field" id="divDoingId" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+				<p class="field-Criteria" id="doing"><strong>DOING</strong>
 				</p>
 				<!-- DOING TASKS LIST -->
 
 
 			</div>
-			<div class="field" id="divDoneId" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<div class="field" id="divDoneId" ondrop="drop(event, this)" ondragover="allowDrop(event)">
 				<p class="field-Criteria" id="done"><strong>DONE</strong>
 				</p>
 				<!-- DONE TASKS LIST -->
