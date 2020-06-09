@@ -27,18 +27,10 @@ function addTask() {
     inputTaskTitle.value = "";
   }
 }
-
 // Ajax Request
 function ajaxRequest() {
   console.log('AJAXRequest');
 }
-
-// TODOTASK COUNT
-function countTasks() {
-  var taskCount = toDoTasks.childElementCount;
-  return taskCount - 1;
-}
-
 // CREATE AN ELEMENT -FUNCTION
 function createTask(taskString) {
   let div = document.createElement("div");
@@ -74,30 +66,30 @@ function createTask(taskString) {
 
   div.setAttribute("class", "field-Criteria taskDiv");
   div.setAttribute("name", "task");
-  div.setAttribute("id", `taskDivId${countTasks()}`);
+  div.setAttribute("id", `taskDivId${taskString}`);
   div.setAttribute("draggable", "true");
   div.setAttribute("ondragstart", "drag(event)");
 
   h4.setAttribute("id", "taskTitlleH4");
 
-  spanDots.setAttribute("id", `dots${countTasks()}`);
+  spanDots.setAttribute("id", `dots${taskString}`);
   spanDots.setAttribute("class", "dotsClass");
 
    divDeleteButtonClose.setAttribute("class", "field-Criteria deleteButtonCloseClass");
-   divDeleteButtonClose.setAttribute("onclick", `deleteTask(taskDivId${countTasks()})`);
+   divDeleteButtonClose.setAttribute("onclick", `deleteTask(taskDivId${taskString})`);
 
    imgCloseButton.setAttribute("src", "images/close.png");
    imgCloseButton.setAttribute("class", "imgCloseButtonClass");
    imgCloseButton.setAttribute("draggable", "false");
 
    divNextStepButtonClose.setAttribute("class", "field-Criteria nextStepButtonCheckClass");
-   divNextStepButtonClose.setAttribute("onclick", `nextStepTask(taskDivId${countTasks()})`);
+   divNextStepButtonClose.setAttribute("onclick", `nextStepTask(taskDivId${taskString})`);
 
    imgCheckButton.setAttribute("src", "images/check.png");
    imgCheckButton.setAttribute("class", "imgCheckButtonClass");
    imgCheckButton.setAttribute("draggable", "false");
 
-   spanMore.setAttribute("id", `more${countTasks()}`);
+   spanMore.setAttribute("id", `more${taskString}`);
   spanMore.setAttribute("class", "moreClass");
 
   textarea.setAttribute("name", "taskDetailsName");
@@ -109,21 +101,20 @@ function createTask(taskString) {
   textarea.setAttribute("wrap", "on");
   
   divDeleteButton.setAttribute("class", "field-Criteria deleteButtonClass");
-  divDeleteButton.setAttribute("id", `deleteId${countTasks()}`);
-  divDeleteButton.setAttribute("onclick", `deleteTask(taskDivId${countTasks()})`);
+  divDeleteButton.setAttribute("id", `deleteId${taskString}`);
+  divDeleteButton.setAttribute("onclick", `deleteTask(taskDivId${taskString})`);
 
   divNextStepButton.setAttribute("class", "field-Criteria nextStepButtonClass");
-  divNextStepButton.setAttribute("id", `deleteId${countTasks()}`);
-  divNextStepButton.setAttribute("onclick", `nextStepTask(taskDivId${countTasks()})`);
+  divNextStepButton.setAttribute("id", `nextStepId${taskString}`);
+  divNextStepButton.setAttribute("onclick", `nextStepTask(taskDivId${taskString})`);
 
   img.setAttribute("class", "arrowDown");
-  img.setAttribute("id", `arrowDownId${countTasks()}`);
+  img.setAttribute("id", `arrowDownId${taskString}`);
   img.setAttribute("src", "images/arrow-down.png");
   img.setAttribute("alt", "Arrow Down");
   img.setAttribute("draggable", "false");
-  img.setAttribute("onclick", `details(dots${countTasks()}, more${countTasks()}, arrowDownId${countTasks()})`);
+  img.setAttribute("onclick", `details(dots${taskString}, more${taskString}, arrowDownId${taskString})`);
 }
-
 // SHOWMORE DETAILS
 function details(dotsId, moreId, imgId) {
   if (dotsId.style.display === "none") {
@@ -136,22 +127,27 @@ function details(dotsId, moreId, imgId) {
      moreId.style.display = "inline";
    }
 }
-// NEXT STEP
-
-// DELETE
+// NEXT STEP BUTTON
+function nextStepTask(taskDivId) {
+  if (taskDivId.parentNode.id == "divToDoId") {
+    doingTasks.appendChild(taskDivId);
+  } else if (taskDivId.parentNode.id == "divDoingId") {
+    doneTasks.appendChild(taskDivId);
+  } else {
+    deleteTask(taskDivId);
+  }
+}
+// DELETE BUTTON
 function deleteTask(taskDivId){
   taskDivId.remove();
 }
-
 // DRAG AND DROP
 function allowDrop(ev) {
   ev.preventDefault();
 }
-
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
-
 function drop(ev, el) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
