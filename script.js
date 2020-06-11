@@ -2,13 +2,14 @@
 // ADD TASK
 const addTaskButton = window.document.getElementById("addTaskButtonId");
 const inputTaskTitle = window.document.getElementById("inputFieldId");
+
 // TASKS EVENTELISTENER
-addTaskButton.addEventListener("click", criteriaToAdd);
+addTaskButton.addEventListener("click", startTaskAddition);
 addTaskButton.addEventListener("click", ajaxRequest);
 // KEYBOARD ENTER - ADD TASK
 inputTaskTitle.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
-    criteriaToAdd();
+    startTaskAddition();
   }
 });
 // TASKS FIELDS
@@ -22,16 +23,24 @@ var tasksArray = [];
 window.onload = function () {
   tasksArray = [];
 };
+function startTaskAddition() {
+  let varTaskStringRight = inputTaskTitle.value
+    .trim()
+    .normalize("NFD")
+    .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "");
+
+    criteriaToAdd(varTaskStringRight)
+}
 // criteria to add
-function criteriaToAdd() {
+function criteriaToAdd(varTaskStringRight) {
   if (inputTaskTitle.value == "") {
     alert("ESCREVA UM TÍTULO");
   } else if (verifyCharacteres(inputTaskTitle.value) == false) {
     alert("INSIRA APENAS NÚMEROS OU LETRAS");
-  } else if (tasksArray.indexOf(inputTaskTitle.value) > -1) {
+  } else if (tasksArray.indexOf(varTaskStringRight) > -1) {
     alert("TÍTULO JÁ EXISTE, ESCOLHA OUTRO");
-  } else if (tasksArray.indexOf(inputTaskTitle.value) === -1) {
-    addTask();
+  } else if (tasksArray.indexOf(varTaskStringRight) === -1) {
+    addTask(varTaskStringRight);
   }
 }
 // APENAS NUMEROS E LETRAS , LETRAS ACENTUADAS
@@ -44,9 +53,9 @@ function verifyCharacteres(taskString) {
   }
 }
 // ADD A TASK
-function addTask() {
-  tasksArray.push(inputTaskTitle.value.toString());
-  createTask(inputTaskTitle.value);
+function addTask(varTaskStringRight) {
+  tasksArray.push(varTaskStringRight.toString());
+  createTask(inputTaskTitle.value, varTaskStringRight);
   inputTaskTitle.value = "";
 }
 // Ajax Request
@@ -54,7 +63,7 @@ function ajaxRequest() {
   console.log("AJAXRequest");
 }
 // CREATE AN ELEMENT -FUNCTION
-function createTask(taskString) {
+function createTask(taskString, varTaskStringRight) {
   let div = document.createElement("div");
   let h4 = document.createElement("h4");
   let spanDots = document.createElement("span");
@@ -67,11 +76,7 @@ function createTask(taskString) {
   let divDeleteButton = document.createElement("div");
   let divDeleteButtonClose = document.createElement("div");
   let divNextStepButtonClose = document.createElement("div");
-  let varTaskString = taskString;
-  let varTaskStringRight = varTaskString
-    .trim()
-    .normalize("NFD")
-    .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "");
+  
 
   toDoTasks.appendChild(div);
   div.appendChild(h4);
@@ -86,7 +91,7 @@ function createTask(taskString) {
   spanMore.appendChild(divDeleteButton);
   div.appendChild(img);
 
-  h4.innerText = varTaskString;
+  h4.innerText = taskString;
   divDeleteButton.innerText = "DELETE";
   divNextStepButton.innerText = "NEXT STEP";
 
@@ -190,7 +195,7 @@ function deleteTask(taskDivId, taskTitle) {
   removeArrayItem(taskTitle);
 }
 function removeArrayItem(taskTitle) {
-  var taskTitleString = taskTitle.toString();
+  taskTitleString = taskTitle.toString();
   tasksArray.splice(tasksArray.indexOf(taskTitleString), 1);
 }
 // DRAG AND DROP
