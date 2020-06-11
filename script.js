@@ -195,7 +195,7 @@ function deleteTask(taskDivId, taskTitle) {
   removeArrayItem(taskTitle);
 }
 function removeArrayItem(taskTitle) {
-  taskTitleString = taskTitle.toString();
+  taskTitleString = taskTitle.textContent
   tasksArray.splice(tasksArray.indexOf(taskTitleString), 1);
 }
 // DRAG AND DROP
