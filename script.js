@@ -29,7 +29,7 @@ function startTaskAddition() {
     .normalize("NFD")
     .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "");
 
-    criteriaToAdd(varTaskStringRight)
+  criteriaToAdd(varTaskStringRight);
 }
 // criteria to add
 function criteriaToAdd(varTaskStringRight) {
@@ -54,7 +54,7 @@ function verifyCharacteres(taskString) {
 }
 // ADD A TASK
 function addTask(varTaskStringRight) {
-  tasksArray.push(varTaskStringRight.toString());
+  tasksArray.push(varTaskStringRight);
   createTask(inputTaskTitle.value, varTaskStringRight);
   inputTaskTitle.value = "";
 }
@@ -76,7 +76,6 @@ function createTask(taskString, varTaskStringRight) {
   let divDeleteButton = document.createElement("div");
   let divDeleteButtonClose = document.createElement("div");
   let divNextStepButtonClose = document.createElement("div");
-  
 
   toDoTasks.appendChild(div);
   div.appendChild(h4);
@@ -195,8 +194,11 @@ function deleteTask(taskDivId, taskTitle) {
   removeArrayItem(taskTitle);
 }
 function removeArrayItem(taskTitle) {
-  taskTitleString = taskTitle.textContent
-  tasksArray.splice(tasksArray.indexOf(taskTitleString), 1);
+  if (typeof(taskTitle) == "number") {
+    tasksArray.splice(tasksArray.indexOf(taskTitle), 1);
+  } else if(typeof(taskTitle.textContent) == "string") {
+    tasksArray.splice(tasksArray.indexOf(taskTitle.textContent), 1);
+  }
 }
 // DRAG AND DROP
 function allowDrop(ev) {
